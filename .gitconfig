@@ -1,0 +1,67 @@
+[user "work"]
+  username = 1000miles
+  name = Thuy Le
+  email = hidden
+
+[user "private"]
+  username = 1000miles
+  name = Thuy Le
+  email = hidden
+	signinkey = hidden
+
+[user "heroku"]
+  username = hidden
+  name = Thuy Le
+  email = hidden
+
+[url "ssh://git@heroku.com/"]
+  insteadOf = https://git.heroku.com/
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[commit]
+  gpgsign = true
+
+[push]
+  default = simple
+
+[branch]
+  autosetuprebase = always
+
+[alias]
+  gx = gitx --all
+  co = checkout
+  ci = commit
+  st = status
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  rem = remote
+  remadd = remote add
+  br = branch
+  up = rebase
+  ci = commit
+
+[color]
+	ui = true
+	diff = true
+	branch = true
+	status = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
