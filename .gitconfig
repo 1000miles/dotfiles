@@ -49,6 +49,9 @@
 	branch = true
 	status = true
 
+[log]
+  decorate = true # show branches, remotes, tags, etc. in git log
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 
