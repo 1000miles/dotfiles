@@ -24,6 +24,10 @@ map <C-n> :NERDTreeToggle<CR>
 filetype plugin indent on    " required
 syntax enable
 
+"" Colors
+set t_Co=256
+set background=dark
+
 " Searching
 set number
 set hlsearch                 " highlight matches
