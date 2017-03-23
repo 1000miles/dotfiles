@@ -29,7 +29,6 @@ set t_Co=256
 set background=dark
 
 " Searching
-set number
 set hlsearch                 " highlight matches
 set incsearch                " incremental searching
 set ignorecase               " searches are case insensitive...
