@@ -1,102 +1,73 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# PERSONAL SETTINGS
 
-# Set locale default
-export LC_ALL=en_US.UTF-8  
+# Encoding
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export EDITOR='vim'
 
-# Set Git alias
-alias commit="co"
-alias status="st"
-alias reset="rest"
+## Colors for Shell
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export TERM=xterm-256color
 
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="Honukai"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git vim ruby vagrant rvm xcode ssh-agent rails bundler brew)
-
+## Oh-My-ZSH
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="junkfood"
+plugins=(git dotenv rake osx vim curl wget rails ruby rvm xcode vagrant tmux zsh-completions nvm node)
 source $ZSH/oh-my-zsh.sh
+autoload -Uz compinit && compinit -i
+fpath=(~/.zsh/completion $fpath)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh/site-functions/_aws
 
-# User configuration
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
-# export MANPATH="/usr/local/man:$MANPATH"
+## Paths
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/MacGPG2/bin"
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+export GOPATH="/usr/local/go/bin"
+export RSYNC="/usr/local/bin/rsync"
+export YUBICOPIV="/usr/local/bin/yubico-piv-tool"
+export GPG_TTY=$(tty)
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Aliases
+alias be='bundle exec'
+alias ll='ls -lha'
+alias dc='docker-compose'
+alias szsh='source $HOME/.zshrc'
+alias sssh='source $HOME/.ssh'
+alias gst='git status'
+alias glog='git log'
+alias gpushom='git push origin master'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+## GIT variables
+export GIT_AUTHOR_EMAIL=gitnap@mailbox.org
+export GIT_AUTHOR_NAME='Thuy Le'
+export GIT_COMMITTER_EMAIL=gitnap@mailbox.org
+export GIT_COMMITTER_NAME='Thuy Le'
+export GIT_EDITOR=/usr/bin/vim
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+## Keys
+export SSH_KEYS="~/.ssh/hackbertie_id_rsa"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+## Scripts
 
-# Thanks for the awesome idea batasrki
-function gemdir {
-  if [[ -z "$1" ]] ; then
-    echo "gemdir expects a parameter, which should be a valid RVM Ruby selector"
+# Customized editor for local and remote sessions
+  if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
   else
-    rvm "$1"
-    cd $(rvm gemdir)
-    pwd
+    export EDITOR='mvim'
   fi
-}
+
+# ===== PACKAGE MANAGERS ==== #
+
+# NVM (via Git install)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
