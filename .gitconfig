@@ -1,70 +1,67 @@
 [user "work"]
-  username = 1000miles
-  name = Thuy Le
-  email = hidden
-	signinkey = hidden
-
-[user "private"]
-  username = 1000miles
-  name = Thuy Le
-  email = hidden
-	signinkey = hidden
-
+	name = Thuy Le
+	email = xxx
+	signingkey = xxx
 [user "heroku"]
-  username = hidden
-  name = Thuy Le
-  email = hidden
+	name = Thuy Le
+	email = xxx
+	signingkey = xxx
 
 [url "ssh://git@heroku.com/"]
   insteadOf = https://git.heroku.com/
-
-[core]
-  excludesfile = ~/.gitignore
-  editor = vim
-
-[commit]
-  gpgsign = true
+[user "private"]
+	name = Thuy Le
+	email = xxx
+	signingkey = 2900A8122C3A6B72
 
 [push]
   default = simple
-
-[branch]
-  autosetuprebase = always
-
 [alias]
-  gx = gitx --all
-  co = checkout
-  ci = commit
-  st = status
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  rem = remote
-  remadd = remote add
-  br = branch
-  up = rebase
-  ci = commit
+	br = branch
+	co = checkout
+	st = status
+	ci = commit --verbose
 
-[color]
-	ui = true
-	diff = true
-	branch = true
-	status = true
+	remo = remote -v
+	brl = branch
+	bra = branch -a
+	brr = branch -r
+	brm = branch --merged
+	lg = log --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit --graph
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
-[log]
-  decorate = true # show branches, remotes, tags, etc. in git log
-
+	dc = diff --cached --color
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+[credential]
+	helper = osxkeychain
+[core]
+  editor = vim
+	excludesfile = /Users/thuyle/.gitignore_global
+	precomposeUnicode = false
+	pager = less
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+[color]
+	ui = true
+	branch = true
+	diff = true
+	interactive = true
+	status = true
+[log]
+	decorate = true
+[commit]
+	gpgsign = true
+  template = ~/.gitmessage
+[color "status"]
+	changed = cyan normal bold
+	untracked = cyan normal bold
+[color "diff"]
+	old = red normal bold
+	new = green normal bold
+[merge]
+	tool = code
