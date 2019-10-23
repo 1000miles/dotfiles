@@ -35,13 +35,9 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 # Aliases
 alias be='bundle exec'
-alias ll='ls -lha'
 alias dc='docker-compose'
 alias szsh='source $HOME/.zshrc'
 alias sssh='source $HOME/.ssh'
-alias gst='git status'
-alias glog='git log'
-alias gpushom='git push origin master'
 
 ## GIT variables
 export GIT_AUTHOR_EMAIL=gitnap@mailbox.org
@@ -62,9 +58,9 @@ export SSH_KEYS="~/.ssh/hackbertie_id_rsa"
     export EDITOR='mvim'
   fi
 
-# ===== PACKAGE MANAGERS ==== #
+# ===== VERSION MANAGERS ==== #
 
-# NVM (via Git install)
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
